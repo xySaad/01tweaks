@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=match_word");
+[hidden] {
+  display: none !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.search {
+  display: flex;
+  position: relative;
+  align-items: center;
+  max-width: 400px;
+}
+
+.search > input {
+  padding: 0.75rem 3.5rem 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 24px;
+  font-size: 1rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search > input:hover {
+  border-color: #c0c0c0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.search > input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.2);
+}
+
+.search > span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.2s ease;
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.search > span:hover {
+  color: #4a90e2;
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.search input[type="checkbox"] {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.search input[type="checkbox"]:checked + span {
+  color: #ffffff;
+  background: #4a90e2;
+  font-weight: 600;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #e0e0e0;
+  color: #333;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.clear-highlights-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  color: #666;
+}
+
+.clear-highlights-btn:hover {
+  background-color: #4a90e2;
+  border-color: #4a90e2;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+button input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.results img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.results img:hover {
+  transform: scale(1.1);
+  border-color: #4a90e2;
+}
+
+div[class^="page_map_"]:has(.highlighted-user) div[class^="rangeMap_user_"] {
+  opacity: 50%;
+}
+
+div[class^="page_map_"] div[class^="rangeMap_user_"]:has(.highlighted-user) {
+  border: #234878 solid;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+/* .highlighted-user {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+  animation: highlight-pulse 0.5s ease-in-out;
+}
+
+@keyframes highlight-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+} */
