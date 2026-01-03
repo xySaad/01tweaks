@@ -6,7 +6,7 @@ const imagePrefix = "https://mapl.zone01oujda.ma/image/map/";
 export default function Profile() {
   window.onFetch({
     request: async (ctx) => {
-      const url = new URL(ctx.args[0]);
+      const url = new URL(ctx.args[0], location.origin);
       const href = url.href;
 
       if (href.startsWith(imagePrefix)) {
@@ -23,7 +23,7 @@ export default function Profile() {
       }
     },
     response: async ({ args, response }) => {
-      const url = new URL(args[0]);
+      const url = new URL(args[0], location.origin);
       const href = url.href;
       if (href === "https://mapl.zone01oujda.ma/online") {
         response
