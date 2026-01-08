@@ -18,13 +18,6 @@ export const Markdown = () => {
       div({
         class: "markdown-body content",
         innerHTML: ($) => marked.parse($(content) || ""),
-        onupdate: ($el) => {
-          console.log($el);
-
-          $el
-            .querySelectorAll("pre code")
-            .forEach((block) => hljs.highlightElement(block));
-        },
       })
     )
   );
