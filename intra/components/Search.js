@@ -2,14 +2,10 @@ import html from "https://cdn.jsdelivr.net/npm/rbind/src/index.js";
 import { Input } from "./Input.js";
 import { position, children } from "../lib/states.js";
 import { navigate } from "../../lib/router.js";
-const { div, link } = html;
+const { div } = html;
 
 export const Search = () => {
   return div({ class: "search" }).add(
-    link({
-      rel: "stylesheet",
-      href: URL.parse("../styles.css", import.meta.url),
-    }),
     Input(),
     div({
       class: "result",

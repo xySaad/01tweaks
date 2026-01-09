@@ -1,0 +1,69 @@
+/* Container for all cards */
+.events {
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; */
+  /* padding: 20px; */
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Individual Card */
+.event {
+  white-space: nowrap;
+  flex: 1;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--bgLevel3);
+  transition: border-color 0.2s ease;
+  border-left: 4px solid !important;
+  border-color: var(--color) !important;
+  transition: all 0.2s ease;
+}
+
+.event:hover,
+.event:focus,
+.event[active="true"] {
+  transform: translateY(-2px);
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.event-success {
+  --color: #1bff6f;
+}
+
+.event-failed {
+  --color: red;
+}
+
+.event-ongoing {
+  --color: #3b82f6;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.path {
+  font-weight: 600;
+  font-size: 0.95rem;
+  /* color: #111827; */
+}
+
+/* Bottom Row: Dates */
+.dates {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  /* font-weight: 500; */
+}

@@ -1,26 +1,30 @@
 import html from "https://cdn.jsdelivr.net/npm/rbind/src/index.js";
 import waitForElement from "../lib/waitElement.js";
 import { OujdaObject } from "./lib/states.js";
-import { Markdown } from "./components/markdown/Markdown.js";
-import { Search } from "./components/Search.js";
+import { Profile } from "./profile/Profile.js";
+import { Navbar } from "./components/Navbar.js";
+const { link } = html;
 
-const { div } = html;
-
-const Navbar = () => {
-  return div({ class: "navbar" }).add(Search(), Markdown());
-};
+const navbar = Navbar();
+const styles = link({
+  rel: "stylesheet",
+  href: URL.parse("./styles.css", import.meta.url),
+});
 
 export default async function Intra() {
-  if (document.querySelector('nav[data-test="navBar"] .search')) {
-    return;
+  !styles.isConnected && document.querySelector("head").append(styles);
+
+  if (location.pathname.match(/\/intra\/.+\/profile\/?$/g)) {
+    await Profile();
   }
 
+  if (navbar.isConnected) return;
   const resp = await fetch("https://learn.zone01oujda.ma/api/object/oujda");
   const json = await resp.json();
   OujdaObject.children = json.children;
+
   waitForElement('nav[data-test="navBar"]').then((nav) => {
-    const s = Navbar();
-    nav.insertBefore(s, nav.lastChild);
-    s.mount();
+    nav.insertBefore(navbar, nav.lastChild);
+    navbar.mount();
   });
 }

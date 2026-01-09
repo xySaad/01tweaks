@@ -6,7 +6,6 @@ const OujdaObject = {
 const position = state(0);
 const children = list([]);
 const query = state("");
-
 query.register((v) => {
   children.batch(() => {
     children.clear();

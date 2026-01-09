@@ -19,7 +19,7 @@ Add this as a [Tampermonkey](https://www.tampermonkey.net/) script:
 import("https://xysaad.github.io/01tweaks/main.js");
 ```
 
-# Features
+# Features and Fixes
 
 ## Profile
 
@@ -29,3 +29,4 @@ import("https://xysaad.github.io/01tweaks/main.js");
 
 - add a quick search bar
 - full screen markdown
+- responsive design for profile page (/intra/campus/profile)
