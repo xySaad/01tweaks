@@ -2,6 +2,9 @@
 @import url("https://cdn.jsdelivr.net/npm/github-markdown-css@5/github-markdown.min.css");
 @import url("./styles/responsive.css");
 @import url("./styles/events.css");
+.markdown-body img {
+  width: auto;
+}
 
 [hidden] {
   display: none !important;
