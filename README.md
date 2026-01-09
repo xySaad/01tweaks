@@ -4,7 +4,24 @@ a script that adds some tweaks to zone01 platforms
 
 # Usage
 
-Add this as a [Tampermonkey](https://www.tampermonkey.net/) script:
+## Bookmarklet
+
+Create a new bookmark and copy paste the script below as the url, then run it when needed.
+
+```js
+javascript: (function () {
+  const script = document.createElement("script");
+  script.type = "module";
+  script.src = "https://xysaad.github.io/01tweaks/main.js";
+
+  const target = document.head || document.documentElement;
+  target.appendChild(script);
+})();
+```
+
+## Tampermonkey
+
+If you want the tweaks to run automatically use the code below as a [Tampermonkey](https://www.tampermonkey.net/) script:
 
 ```js
 // ==UserScript==
