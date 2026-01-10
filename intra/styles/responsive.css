@@ -184,3 +184,14 @@ html
   div {
   overflow: hidden;
 }
+/* adjust padding, small screens had too much padding */
+html
+  body.dark-theme
+  div#root
+  div
+  div
+  div
+  div.mt10-01.w100p-01.pv11-01.ph12-01.pv7_s-01.ph9_s-01 {
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
