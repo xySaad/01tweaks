@@ -1,7 +1,7 @@
 import { data } from "../../lib/data/data.js";
 import { EventDetails } from "./EventDetails.js";
 import html from "https://cdn.jsdelivr.net/npm/rbind/src/index.js";
-const { div } = html;
+const { div, input } = html;
 
 const fetchUserInfo = async () => {
   // Return cached user data if available
@@ -65,5 +65,8 @@ export const fetchRootEvents = async () => {
 export const RootEvents = async () => {
   const rootEvents = await fetchRootEvents();
 
-  return div({ class: "events" }).add(...rootEvents.map(EventDetails));
+  return div({ class: "events" }).add(
+    div({ class: "chevron" }).add(input({ type: "checkbox" })),
+    ...rootEvents.map(EventDetails)
+  );
 };
