@@ -10,11 +10,15 @@ const markedInstance = new Marked(
     return hljs.highlightAuto(code).value;
   })
 );
+
 markedInstance.use({
   walkTokens(token) {
     if (token.type === "link" || token.type === "image") {
       const path = location.pathname.split("/");
-      const subject = path[path.length - 1];
+      let subject = path[path.length - 1];
+      if (this.defaults.renderer.options.activeTab === "audit")
+        subject += "/audit";
+
       const endpoint = `/api/content/root/01-edu_module/content/${subject}/`;
       const url = URL.parse(endpoint, location.origin);
       token.href = URL.parse(token.href, url);
