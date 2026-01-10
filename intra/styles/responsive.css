@@ -156,3 +156,21 @@ html
   margin: 0;
   white-space: nowrap;
 }
+
+/* Current program */
+html
+  body.dark-theme
+  div#root
+  div
+  div
+  div
+  div.mt10-01.w100p-01.pv11-01.ph12-01.pv7_s-01.ph9_s-01
+  div.grid-01.mt8-01.mt6_s-01.w100p-01
+  div.flexColumn-01.gridRowSpan3_s-01
+  div.bgLevel3-01.flex1-01.aShadow-01
+  div.pv5-01.ph4-01.textMinimal-01.relative-01.flexColumn-01.justifyBetween-01.w100p-01.h100p-01
+  div
+  div.alignEnd_s-01 {
+  display: flex;
+  flex-wrap: wrap;
+}

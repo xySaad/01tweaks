@@ -28,4 +28,10 @@ export const Profile = async () => {
   wrap.add(quickActions, startWorking, await RootEvents());
   quickActions.replaceWith(wrap);
   wrap.mount();
+
+  //how did that even got there?
+  const progTimeline = await waitForElement(
+    "html body.dark-theme div#root div div div div.mt10-01.w100p-01.pv11-01.ph12-01.pv7_s-01.ph9_s-01 div.grid-01.mt8-01.mt6_s-01.w100p-01 div.flexColumn-01.gridColumnSpan2-01.gridColumnSpan1_s-01.gridRowSpan3_s-01 div.bgGreyHighlighted-01.flex1-01.aShadow-01 div.alt-theme.pv5-01.ph4-01.textMinimal-01.relative-01.flexColumn-01.w100p-01.h100p-01 div.alignStart-01.h100p-01 div.ml4-01.pt3-01.w100p-01.h100p-01.flexColumn-01.justifyBetween-01 div.justifyEnd-01"
+  );
+  progTimeline.parentNode.firstChild.appendChild(progTimeline);
 };
