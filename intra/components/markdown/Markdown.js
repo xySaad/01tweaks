@@ -2,11 +2,35 @@ import html, { state } from "https://cdn.jsdelivr.net/npm/rbind/src/index.js";
 import { marked } from "./marked.js";
 const { div, span } = html;
 
-const hidden = state(true);
+//TODO: refactor this ugly code
+const fetchMd = async () => {
+  if (hidden.value) return;
+  const tab = activeTab.value;
+  const path = location.pathname.split("/");
+  const subject = path[path.length - 1];
+  const cacheKey = `${tab}:${subject}`;
+
+  if (contentCache[cacheKey]) {
+    content.value = contentCache[cacheKey];
+    return;
+  }
+
+  const targetMd = tab === "audit" ? subject + "/audit" : subject;
+  const endpoint = `/api/content/root/01-edu_module/content/${targetMd}/README.md`;
+  const resp = await fetch(location.origin + endpoint);
+  const text = await resp.text();
+
+  contentCache[cacheKey] = text;
+  content.value = text;
+};
+
+export const hidden = state(true);
 const content = state("");
 const activeTab = state("subject");
-const fullScreen = state(false);
+export const fullScreen = state(false);
 const contentCache = {};
+activeTab.register(fetchMd);
+hidden.register(fetchMd);
 
 export const Markdown = () => {
   const body = div({ class: "markdown-body" });
@@ -23,7 +47,7 @@ export const Markdown = () => {
     span({
       class: "material-symbols-outlined",
       textContent: "markdown",
-      onclick: fetchMd,
+      onclick: (activeTab.hidden = false),
     }),
     div({ class: "markdown-wrap", hidden }).add(
       div({ class: "closer", onclick: () => (hidden.value = true) }),
@@ -44,10 +68,7 @@ const Toggle = () => {
     div({
       textContent: name,
       active: ($) => $(activeTab) === name,
-      onclick: () => {
-        activeTab.value = name;
-        fetchMd();
-      },
+      onclick: () => (activeTab.value = name),
     });
 
   return div({ class: "toggle" }).add(
@@ -65,30 +86,3 @@ const Toggle = () => {
     // })
   );
 };
-const fetchMd = async () => {
-  const tab = activeTab.value;
-  const path = location.pathname.split("/");
-  const subject = path[path.length - 1];
-  const cacheKey = `${tab}:${subject}`;
-
-  if (contentCache[cacheKey]) {
-    content.value = contentCache[cacheKey];
-    hidden.value = false;
-    return;
-  }
-
-  const targetMd = tab === "audit" ? subject + "/audit" : subject;
-  const endpoint = `/api/content/root/01-edu_module/content/${targetMd}/README.md`;
-  const resp = await fetch(location.origin + endpoint);
-  const text = await resp.text();
-
-  contentCache[cacheKey] = text;
-  content.value = text;
-  hidden.value = false;
-};
-
-document.addEventListener("keydown", ({ key }) => {
-  if (key === "Escape") {
-    hidden.value = true;
-  }
-});
