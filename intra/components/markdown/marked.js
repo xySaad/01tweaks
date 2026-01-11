@@ -1,6 +1,6 @@
 import { Marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import hljs from "https://cdn.skypack.dev/highlight.js";
-import { markedHighlight } from "https://cdn.skypack.dev/marked-highlight";
+import hljs from "https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/+esm";
+import { markedHighlight } from "https://cdn.jsdelivr.net/npm/marked-highlight@2.2.0/+esm";
 
 const markedInstance = new Marked(
   markedHighlight((code, lang) => {
