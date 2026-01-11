@@ -5,10 +5,20 @@ const { div, span } = html;
 const hidden = state(true);
 const content = state("");
 const activeTab = state("subject");
-
+const fullScreen = state(false);
 const contentCache = {};
 
 export const Markdown = () => {
+  const body = div({ class: "markdown-body" });
+
+  fullScreen.register((on) => {
+    if (on) {
+      body.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
   return div({ class: "markdown" }).add(
     span({
       class: "material-symbols-outlined",
@@ -17,7 +27,7 @@ export const Markdown = () => {
     }),
     div({ class: "markdown-wrap", hidden }).add(
       div({ class: "closer", onclick: () => (hidden.value = true) }),
-      div({ class: "markdown-body" }).add(
+      body.add(
         Toggle(),
         div({
           class: "content",
@@ -42,7 +52,12 @@ const Toggle = () => {
 
   return div({ class: "toggle" }).add(
     tab("subject"),
-    tab("audit")
+    tab("audit"),
+    span({
+      class: "material-symbols-outlined",
+      textContent: "expand_content",
+      onclick: () => (fullScreen.value = !fullScreen.value),
+    })
     // span({ class: "material-symbols-outlined", textContent: "docs" }),
     // span({
     //   class: "material-symbols-outlined",
