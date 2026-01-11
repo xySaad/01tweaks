@@ -47,7 +47,7 @@ export const Markdown = () => {
     span({
       class: "material-symbols-outlined",
       textContent: "markdown",
-      onclick: (activeTab.hidden = false),
+      onclick: () => (hidden.value = false),
     }),
     div({ class: "markdown-wrap", hidden }).add(
       div({ class: "closer", onclick: () => (hidden.value = true) }),
