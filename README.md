@@ -36,14 +36,22 @@ If you want the tweaks to run automatically use the code below as a [Tampermonke
 import("https://xysaad.github.io/01tweaks/main.js");
 ```
 
-# Features and Fixes
+# Tweaks
 
 ## Profile
 
-- add a search bar for online users with highlights
-
+- Search bar:
+  - add a quick search for online users using login (username).
+  - use (ctrl + /) to open the search bar.
+  - multi select users and highlight them in the map.
+  
 ## Intra
 
-- add a quick search bar
+- Search bar:
+  - add a quick search for any project using it's name.
+  - use (ctrl + /) to open the search bar.
 - full screen markdown
-- responsive design for profile page (/intra/campus/profile)
+  - adds an icon to the navbar that opens a the project markdown in a reader-like mode
+  - you can read the markdown regardless if you already unlocked the project or not. 
+- css
+  - slight changes to profile page (/intra/campus/profile); noticeable in small screens.
